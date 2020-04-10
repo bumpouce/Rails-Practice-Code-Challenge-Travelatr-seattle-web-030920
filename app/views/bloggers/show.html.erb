@@ -1,0 +1,25 @@
+<h1> <%= @blogger.name %> </h1>
+<br>
+<h3>Bio</h3>
+<p> <%= @blogger.age%> years old</p>
+<p> <%= @blogger.bio%> </p>
+<br>
+<h2> Posts </h2>
+<p> <%= @blogger.name%>'s <%=@count%> posts have been liked <%=@blogger.total_likes_count%> times!</p>
+<br>
+
+<%if @count > 0 %>
+    <h3> Featured Post </h3>
+    Title: <%=link_to @featured.title, post_path(@featured)%><br>
+    Destination: <%= link_to @featured.destination.name, destination_path(@featured.destination_id) %>, <%= @featured.destination.country %><br>
+    Total Likes: <%= @featured.likes %><br>
+    <%= @featured.content%><br>
+    <br>
+    <h3> Top Destinations </h3>
+    <% @top_destinations.each do |post| %>
+        <%=post.destination.name%>     
+        <%=link_to post.title, post_path(post.id)%><br>
+    <%end%>
+<%end%>
+<br>
+<%= link_to "Make a post", new_post_path %>

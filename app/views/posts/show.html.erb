@@ -1,0 +1,15 @@
+<h1> <%= @post.title %> </h1>
+
+Author: <%= link_to @post.blogger.name, blogger_path(@post.blogger_id)%><br>
+
+Destination: <%=link_to @post.destination.name, destination_path(@post.destination_id)%><br>
+
+Total Likes: <%= @post.likes %><br>
+
+<%= form_tag(like_path(@post)) do %>
+<%= submit_tag "Like this Post", :class => 'edit_button'%>
+<% end %>
+
+<p><%= @post.content%></p>
+<br><br>
+<%= link_to "Edit this post", edit_post_path(@post)%>
